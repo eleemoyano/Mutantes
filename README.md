@@ -78,44 +78,45 @@ Envía una secuencia de ADN para analizar.
         "TCACTG"
     ]
 }
-Respuestas Posibles:
+```
 
-🟢 200 OK: Es un Mutante.
+* **Respuestas Posibles:**
+    * 🟢 **200 OK**: Es un **Mutante**.
+    * 🔴 **403 Forbidden**: Es un **Humano**.
+    * 🟠 **400 Bad Request**: ADN inválido.
 
-🔴 403 Forbidden: Es un Humano.
-
-🟠 400 Bad Request: ADN inválido.
-
-2. Ver Estadísticas (GET)
+### 2. Ver Estadísticas (GET)
 Consulta las estadísticas de las verificaciones de ADN.
 
-URL: http://localhost:8080/stats
+* **URL:** `http://localhost:8080/stats`
+* **Método:** `GET`
+* **Respuesta Esperada:**
 
-Método: GET
-
-Respuesta Esperada:
-
-JSON
-
+```json
 {
     "count_mutant_dna": 40,
     "count_human_dna": 100,
     "ratio": 0.4
 }
-🏛️ Arquitectura y Diagramas
-El sistema utiliza un Controlador para recibir peticiones, un Servicio para la lógica de negocio y validaciones, y un Repositorio para guardar los resultados (evitando re-analizar ADNs ya procesados).
+```
 
-Diagrama de Secuencia: Análisis de Mutante (POST)
-Fragmento de código
+---
 
+## 🏛️ Arquitectura y Diagramas
+
+El sistema utiliza un **Controlador** para recibir peticiones, un **Servicio** para la lógica de negocio y validaciones, y un **Repositorio** para guardar los resultados (evitando re-analizar ADNs ya procesados).
+
+### Diagrama de Secuencia: Análisis de Mutante (POST)
+
+```mermaid
 sequenceDiagram
     autonumber
-    actor Cliente as Cliente (Postman/Swagger)
-    participant Controller as MutantController
-    participant Service as MutantService
-    participant Detector as MutantDetector
-    participant Repo as DnaRecordRepository
-    participant DB as Base de Datos
+    actor Cliente
+    participant Controller
+    participant Service
+    participant Detector
+    participant Repo
+    participant DB
 
     Cliente->>Controller: POST /mutant (ADN)
     activate Controller
@@ -148,9 +149,11 @@ sequenceDiagram
     
     Controller-->>Cliente: 200 OK
     deactivate Controller
-Diagrama de Secuencia: Estadísticas (GET)
-Fragmento de código
+```
 
+### Diagrama de Secuencia: Estadísticas (GET)
+
+```mermaid
 sequenceDiagram
     autonumber
     actor Cliente
@@ -182,10 +185,18 @@ sequenceDiagram
     deactivate Service
     Controller-->>Cliente: 200 OK
     deactivate Controller
-🧪 Testing
-El proyecto incluye tests unitarios con JUnit 5 y Mockito. Para ejecutarlos desde la terminal:
+```
 
-Bash
+---
 
+## 🧪 Testing
+
+El proyecto incluye tests unitarios con **JUnit 5** y **Mockito**.
+Para ejecutarlos desde la terminal:
+
+```bash
 ./gradlew test
-Hecho por [TU NOMBRE AQUÍ] - 2024
+```
+
+---
+Hecho por **Moyano Elena** - 2024
