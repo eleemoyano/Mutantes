@@ -199,4 +199,4 @@ Para ejecutarlos desde la terminal:
 ```
 
 ---
-Hecho por **Moyano Elena** - 2024
+Hecho por **Moyano Elena** 
